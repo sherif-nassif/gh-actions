@@ -13,9 +13,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: lint
-        run: "eslint --ext .jsx --fix src"
+        run: npm run package.json.lint
       - name: Tests
-        run: "vitest run"
+        run: npm run package.json.test
+
         
   Build:
     runs-on: ubuntu-latest
