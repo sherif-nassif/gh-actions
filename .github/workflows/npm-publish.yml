@@ -30,9 +30,8 @@ jobs:
       - name: Build Project
         run: npm run build
       - name: Deploy
-        run| 
+        run: |
           echo "Deploying to production"
           cat /etc/os-release
           hostnamectl
           hostname
-          
