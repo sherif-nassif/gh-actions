@@ -1,12 +1,13 @@
 name: Test Project
-on: 
-  [push, workflow_dispatch]
-  branches:
-    - main
-    - dev
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
 jobs:
   test:
-  environment: testing
+    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
