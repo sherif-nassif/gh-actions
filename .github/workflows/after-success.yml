@@ -4,7 +4,6 @@ on:
     workflows: Test Project
     types:
       - completed
-  #workflow_dispatch:
 jobs:
   on-success:
     runs-on: ubuntu-latest
