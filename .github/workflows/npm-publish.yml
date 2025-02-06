@@ -59,4 +59,4 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     needs: build
-    uses: ./.github/workflows/recall.yml
+    uses: github-personal-repos/gh-actions/.github/workflows/recall.yml
