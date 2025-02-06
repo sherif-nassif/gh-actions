@@ -63,5 +63,5 @@ jobs:
       - name: Get Code
         uses: actions/checkout@v4
       - name: use another workflow
-        uses: ./.github/workflows/recall.yml
+        uses: ./workflows/recall.yml
     
