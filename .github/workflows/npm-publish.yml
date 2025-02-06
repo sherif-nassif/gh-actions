@@ -61,5 +61,5 @@ jobs:
     needs: build
     steps:
       - name: use another workflow
-        uses: ../.github/workflows/recall.yml
+        uses: .github/workflows/recall.yml
     
