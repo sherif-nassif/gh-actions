@@ -1,6 +1,5 @@
 name: recall
-on: 
-  workflow_call:
+on: workflow_call
 jobs:
   Deploy:
     runs-on: ubuntu-latest
