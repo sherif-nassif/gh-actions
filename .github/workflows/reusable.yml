@@ -1,8 +1,8 @@
-name: recall
+name: reusable Deploy
 on: workflow_call
 jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
+      - name: output information
         run: echo "Deploying to server"
