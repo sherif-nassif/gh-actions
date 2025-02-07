@@ -4,6 +4,8 @@ on:
     branches:
       - master
   workflow_dispatch:
+env:
+  deploy: false
 jobs:
   test:
     environment: testing
