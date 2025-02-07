@@ -56,6 +56,12 @@ jobs:
         with:
           name: dist-files
           path: dist
+      - name: conditional step
+        if: [2 -eq 2]; then
+        export deploy=true
+        else: export deploy=false
+        fi
   Deploy:
+    if deploy == true
     needs: build
     uses: ./.github/workflows/reusable.yml
