@@ -26,44 +26,31 @@ jobs:
         run: npm run lint
       - name: Run Tests
         run: npm run test
-        
-  Build:
+  build:
     runs-on: ubuntu-latest
-    needs: test
-    outputs:
-      dist: ${{ steps.publish.outputs.script-file }}
     steps:
-      - name: Get Code
+      - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Install JS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
       - name: Build Project
         run: npm run build
       - name: Publish JS filename
-        id: pusblish
+        id: publish
         run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist-files
           path: dist
-      - name: conditional step
+      - name: Set Deploy Variable
         run: |
           if [ 2 -eq 2 ]; then
             echo "deploy=true" >> $GITHUB_ENV
           else
             echo "deploy=false" >> $GITHUB_ENV
           fi
-  Deploy:
+  deploy:
     if: env.deploy == 'true'
     needs: build
     uses: ./.github/workflows/reusable.yml
