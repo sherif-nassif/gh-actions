@@ -51,6 +51,6 @@ jobs:
             echo "deploy=false" >> $GITHUB_ENV
           fi
   deploy:
-    if: env.deploy == 'true'
+    if: ${{env.deploy == 'true'}}
     needs: build
     uses: ./.github/workflows/reusable.yml
