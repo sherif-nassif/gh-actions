@@ -57,11 +57,13 @@ jobs:
           name: dist-files
           path: dist
       - name: conditional step
-        if: [2 -eq 2]; then
-        export deploy='true'
-        else: export deploy='false'
-        fi
+        run: |
+          if [ 2 -eq 2 ]; then
+            echo "deploy=true" >> $GITHUB_ENV
+          else
+            echo "deploy=false" >> $GITHUB_ENV
+          fi
   Deploy:
-    if deploy == true
+    if: env.deploy == 'true'
     needs: build
     uses: ./.github/workflows/reusable.yml
